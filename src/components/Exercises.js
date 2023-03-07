@@ -1,7 +1,7 @@
 import React from "react";
 
-function Exercises() {
-  return <div>Exercises</div>;
+function Exercises({ bodyPart }) {
+  return <div>{bodyPart}</div>;
 }
 
 export default Exercises;
