@@ -19,9 +19,10 @@ function ExerciseDetail() {
 
       // fetch exercise data by its id.
       const exerciseDetailData = await fetchData(
-        `${exerciseDbUrl}/exercises/${id}`,
+        `${exerciseDbUrl}/exercises/exercise/${id}`,
         exerciseOptions
       );
+      console.log(exerciseDetailData);
       setExerciseDetail(exerciseDetailData);
     };
     fetchExercisesData();
