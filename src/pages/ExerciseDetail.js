@@ -9,6 +9,8 @@ import SimilarExercises from "../components/SimilarExercises";
 function ExerciseDetail() {
   const [exerciseDetail, setExerciseDetail] = useState({});
   const [exerciseVideos, setExerciseVideos] = useState([]);
+  const [targetMuscleExercises, setTargetMuscleExercises] = useState([]);
+  const [equipmentExercises, setEquipmentExercises] = useState([]);
   const { id } = useParams();
   // console.log(id);
 
@@ -33,6 +35,20 @@ function ExerciseDetail() {
       );
       console.log(exerciseVideosData);
       setExerciseVideos(exerciseVideosData.contents);
+
+      //fetch target muscle exercises data for the SimilarExercises component
+      const targetMuscleExercisesData = await fetchData(
+        `${exerciseDbUrl}/exercises/target/${exerciseDetailData.target}`,
+        exerciseOptions
+      );
+      setTargetMuscleExercises(targetMuscleExercisesData);
+
+      //fetch target equipment exercises data for the SimilarExercises component
+      const equipmentExercisesData = await fetchData(
+        `${exerciseDbUrl}/exercises/equipment/${exerciseDetailData.equipment}`,
+        exerciseOptions
+      );
+      setEquipmentExercises(equipmentExercisesData);
     };
     fetchExercisesData();
   }, [id]);
@@ -44,7 +60,10 @@ function ExerciseDetail() {
         exerciseVideos={exerciseVideos}
         name={exerciseDetail.name}
       />
-      <SimilarExercises />
+      <SimilarExercises
+        targetMuscleExercises={targetMuscleExercises}
+        equipmentExercises={equipmentExercises}
+      />
     </Box>
   );
 }
