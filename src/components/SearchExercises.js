@@ -74,7 +74,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
             color: "#fff",
             textTransform: "none",
             width: { lg: "173px", xs: "80px" },
-            height: "100%",
+            height: "56px",
             position: "absolute",
             right: "0px",
             fontSize: { lg: "20px", xs: "14px" },
@@ -95,4 +95,5 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
     </Stack>
   );
 };
+
 export default SearchExercises;
